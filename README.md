@@ -1,4 +1,4 @@
-# Flood-Risk and Weather Monitoring for Noveleta
+# Flood-Risk and Weather Monitoring for Noveleta, Cavite
 ## Problem Statement
 Residents of Noveleta needs an accessible way to identify areas that are highly susceptible to flooding, including locations that may experience flooding even during light or moderate rainfall.
 
