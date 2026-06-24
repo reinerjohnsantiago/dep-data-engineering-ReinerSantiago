@@ -1,15 +1,13 @@
-# Flood-Risk and Weather Monitoring for Noveleta and Rosario
+# Flood-Risk and Weather Monitoring for Noveleta
 ## Problem Statement
-Residents of Noveleta and Rosario need an accessible way to identify areas that are highly susceptible to flooding, including locations that may experience flooding even during light or moderate rainfall.
+Residents of Noveleta needs an accessible way to identify areas that are highly susceptible to flooding, including locations that may experience flooding even during light or moderate rainfall.
 
 The dashboard aims to answer:
 
 Which locations are most flood-prone, and how likely are they to experience flooding based on current and forecasted rainfall?
 
-Which specific barangays or zones should be prioritized for flood-control infrastructure projects (e.g., drainage, dikes, pumping stations) to maximize public safety and construction efficiency?
-
 ## Audience
-• Residents of Noveleta and Rosario, Cavite
+• Residents of Noveleta, Cavite
 
 • Local government units
 
