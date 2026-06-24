@@ -8,7 +8,7 @@ citizens around noveleta and rosario
 i want to track where is the most flood prone areas and be ready when a heavy rainfall comes
 
 ## Likely Data Source
-[TEST](https://lipad.dream.upd.edu.ph/)
+i will explore lipad dream edu (https://lipad.dream.upd.edu.ph/)
 
 ## Possible Final Dashboard
 the dashboard should help people prepare incase of storm, emergency or even a small frequent rain(hanging habagat)
