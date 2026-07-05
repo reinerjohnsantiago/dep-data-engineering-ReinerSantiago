@@ -46,21 +46,73 @@ You need:
 
 ## Step 1 — Copy This Starter Kit to Your GitHub
 
-You have two options:
+You need to create your own GitHub repo with the starter kit files inside. Follow the steps below based on what you're comfortable with.
 
-**Option A — Use This Repo as a Template (recommended)**
+---
 
-1. Go to the top of this GitHub repo and click **Use this template → Create a new repository**
-2. Name it something like `dep-data-engineering-<your-name>`
-3. Set it to **Public** (required for milestone submission)
-4. Click **Create repository**
+### Option A — Download and Upload (No Git knowledge required)
 
-**Option B — Fork and Copy Manually**
+#### 1. Create a new GitHub repo
 
-1. Fork this repo to your account
-2. In your fork, delete everything outside of `cohorts/starter-kit/` and restructure the contents as your root
+1. Go to [github.com](https://github.com) and sign in
+2. Click the **+** icon in the top-right corner → **New repository**
+3. Name it something like `dep-data-engineering-<your-name>` (e.g. `dep-data-engineering-juan`)
+4. Set visibility to **Public** ← required
+5. Check **Add a README file**
+6. Click **Create repository**
 
-> Your repo must be **public** at all times so reviewers and the auto-checker can access it. Do not make it private at any point during the program — even temporarily. If your repo is private when you submit, the auto-check will fail and your submission will not be reviewed.
+#### 2. Download the starter kit files
+
+1. Go to the [curriculum repo](https://github.com/dataengineeringpilipinas/dep-data-engineering-open-track)
+2. Click the green **Code** button → **Download ZIP**
+3. Extract the ZIP on your computer
+4. Open the extracted folder and navigate to `cohorts/starter-kit/`
+5. You should see folders like `data/`, `scripts/`, `notebooks/`, `dashboard/`, and files like `requirements.txt` and `README.md`
+
+#### 3. Upload the files to your new repo
+
+1. Open your newly created GitHub repo
+2. Click **Add file → Upload files**
+3. Drag all the contents from inside `cohorts/starter-kit/` into the upload area (not the folder itself — the files and folders inside it)
+4. Scroll down, write a commit message like `Initial commit from DEP starter kit`
+5. Click **Commit changes**
+
+---
+
+### Option B — Using Git (Recommended if you know the command line)
+
+#### 1. Create your GitHub repo
+
+1. Go to [github.com](https://github.com) → **+** → **New repository**
+2. Name it `dep-data-engineering-<your-name>`, set to **Public**, do NOT initialize with a README
+3. Click **Create repository** and copy the repo URL
+
+#### 2. Set up your local repo with the starter kit
+
+Run these commands in your terminal, replacing the placeholders:
+
+```bash
+# Clone the curriculum repo to get the starter kit
+git clone https://github.com/dataengineeringpilipinas/dep-data-engineering-open-track.git
+
+# Copy the starter kit into a new folder
+cp -r dep-data-engineering-open-track/cohorts/starter-kit/. dep-data-engineering-<your-name>/
+
+# Go into your new project folder
+cd dep-data-engineering-<your-name>
+
+# Set up git and push to your GitHub repo
+git init
+git add .
+git commit -m "Initial commit from DEP starter kit"
+git branch -M main
+git remote add origin https://github.com/<your-username>/dep-data-engineering-<your-name>.git
+git push -u origin main
+```
+
+---
+
+> **Your repo must be public at all times** so reviewers and the auto-checker can access it. Do not make it private at any point during the program — even temporarily. If your repo is private when you submit, the auto-check will fail and your submission will not be reviewed.
 
 ---
 
@@ -75,7 +127,7 @@ cd <your-repo-name>
 
 ## Step 3 — Understand the Folder Structure
 
-```
+```text
 your-repo/
 ├── data/
 │   ├── raw/            ← Phase 2: raw data files go here
@@ -117,7 +169,7 @@ pip freeze > requirements.txt
 ## Step 5 — Work Through the Phases
 
 | Phase | Weeks | What you build |
-|-------|-------|----------------|
+| ----- | ----- | -------------- |
 | 1 — Foundations | 1–4 | Define your problem, find your data source, set up this repo |
 | 2 — Data Collection | 5–6 | Write `scripts/ingest.py`, pull raw data into `data/raw/` |
 | 3 — Data Processing | 7–12 | Write `scripts/transform.py`, clean and model data in `data/processed/` |
@@ -154,7 +206,7 @@ After you submit, the auto-checker will run and post a comment on your issue wit
 **What happens next:**
 
 | Step | Who | What |
-|------|-----|------|
+| ---- | --- | ---- |
 | Auto-Check | Bot | Clones your repo at the commit hash and checks for required files. Posts ✅/❌ per item. |
 | Fix & Resubmit | You | If any check fails, fix the issue, push a new commit, and post the new commit hash as a comment on the same issue. The auto-check re-runs automatically. |
 | Review | Volunteer | Once all checks pass, a Milestone Reviewer reads your work and applies one of two labels. |
@@ -213,7 +265,7 @@ Replace this file with your own project README as you progress. At minimum, your
 ## Milestone Quick Reference
 
 | Milestone | When | What reviewers check |
-|-----------|------|---------------------|
+| --------- | ---- | -------------------- |
 | M0 | Week 1 | Repo is public, README describes your project |
 | M1 | Week 3–4 | Folder structure exists, requirements.txt present |
 | M2 | Week 6 | `ingest.py` runs, `data/raw/` has real data |
