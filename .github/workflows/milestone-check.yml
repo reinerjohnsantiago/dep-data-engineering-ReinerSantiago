@@ -255,6 +255,13 @@ jobs:
               const cohort      = (context.payload.issue.body || '').match(/###\s+Cohort\s*\n+([^\n#]+)/i)?.[1]?.trim() || '—';
               const repoUrl     = '${{ steps.parse.outputs.repo_url }}';
 
+              // Only notify Discord for enrolled participants
+              const enrolledRes = await fetch(`https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/main/.github/enrolled-participants.json`);
+              const enrolledData = await enrolledRes.json();
+              const enrolledSet = new Set((enrolledData.participants || []).map(u => u.toLowerCase()));
+              const isEnrolled = enrolledSet.has(context.payload.issue.user.login.toLowerCase());
+              if (!isEnrolled) return;
+
               const discordBody = {
                 embeds: [{
                   title: `📬 New Submission Ready for Review — ${milestone}`,

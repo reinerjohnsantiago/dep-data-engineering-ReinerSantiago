@@ -152,34 +152,39 @@ jobs:
                   labels: ['auto-check-pending']
                 });
 
-                // Notify Discord — resubmission passed
-                const issueUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/issues/${context.payload.issue.number}`;
-                const builderName = (context.payload.issue.body || '').match(/###\s+Builder Name\s*\n+([^\n#]+)/i)?.[1]?.trim() || context.payload.issue.user.login;
-                const cohort      = (context.payload.issue.body || '').match(/###\s+Cohort\s*\n+([^\n#]+)/i)?.[1]?.trim() || '—';
-                const repoUrl     = '${{ steps.parse.outputs.repo_url }}';
+                // Notify Discord — resubmission passed (enrolled participants only)
+                const enrolledRes = await fetch(`https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/main/.github/enrolled-participants.json`);
+                const enrolledData = await enrolledRes.json();
+                const enrolledSet = new Set((enrolledData.participants || []).map(u => u.toLowerCase()));
+                if (enrolledSet.has(context.payload.issue.user.login.toLowerCase())) {
+                  const issueUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/issues/${context.payload.issue.number}`;
+                  const builderName = (context.payload.issue.body || '').match(/###\s+Builder Name\s*\n+([^\n#]+)/i)?.[1]?.trim() || context.payload.issue.user.login;
+                  const cohort      = (context.payload.issue.body || '').match(/###\s+Cohort\s*\n+([^\n#]+)/i)?.[1]?.trim() || '—';
+                  const repoUrl     = '${{ steps.parse.outputs.repo_url }}';
 
-                const discordBody = {
-                  embeds: [{
-                    title: `🔄 Resubmission Ready for Review — ${milestone}`,
-                    color: 0xF59E0B,
-                    fields: [
-                      { name: 'Builder',   value: builderName,                    inline: true },
-                      { name: 'Cohort',    value: cohort,                         inline: true },
-                      { name: 'Milestone', value: milestone,                      inline: true },
-                      { name: 'Commit',    value: '`' + commitHash.slice(0,7) + '`', inline: true },
-                      { name: 'Repo',      value: repoUrl,                        inline: false },
-                      { name: 'Issue',     value: issueUrl,                       inline: false },
-                    ],
-                    footer: { text: 'Resubmission passed all checks ✅ — reviewer re-evaluation needed' },
-                    timestamp: new Date().toISOString()
-                  }]
-                };
+                  const discordBody = {
+                    embeds: [{
+                      title: `🔄 Resubmission Ready for Review — ${milestone}`,
+                      color: 0xF59E0B,
+                      fields: [
+                        { name: 'Builder',   value: builderName,                       inline: true },
+                        { name: 'Cohort',    value: cohort,                            inline: true },
+                        { name: 'Milestone', value: milestone,                         inline: true },
+                        { name: 'Commit',    value: '`' + commitHash.slice(0,7) + '`', inline: true },
+                        { name: 'Repo',      value: repoUrl,                           inline: false },
+                        { name: 'Issue',     value: issueUrl,                          inline: false },
+                      ],
+                      footer: { text: 'Resubmission passed all checks ✅ — reviewer re-evaluation needed' },
+                      timestamp: new Date().toISOString()
+                    }]
+                  };
 
-                await fetch('${{ secrets.DISCORD_WEBHOOK_URL }}', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify(discordBody)
-                });
+                  await fetch('${{ secrets.DISCORD_WEBHOOK_URL }}', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(discordBody)
+                  });
+                }
 
               } else {
                 body += `**${results.total - results.passed} check(s) still failing.** Fix the issues above and post a new commit hash to resubmit.\n`;
