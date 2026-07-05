@@ -38,6 +38,7 @@ flowchart TD
 ## Before You Start
 
 You need:
+
 - A free [GitHub account](https://github.com)
 - [Python 3.10+](https://www.python.org/downloads/) installed on your machine
 - [Git](https://git-scm.com/) installed and configured
@@ -113,6 +114,8 @@ git push -u origin main
 ---
 
 > **Your repo must be public at all times** so reviewers and the auto-checker can access it. Do not make it private at any point during the program — even temporarily. If your repo is private when you submit, the auto-check will fail and your submission will not be reviewed.
+>
+> **Remember your repo URL.** When you submit a milestone, you will be asked to paste your GitHub repo URL (e.g. `https://github.com/your-username/dep-data-engineering-your-name`). This must be the same URL throughout the entire program — do not rename or delete the repo after you start submitting.
 
 ---
 
