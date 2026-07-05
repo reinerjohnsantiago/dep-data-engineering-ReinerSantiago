@@ -45,11 +45,10 @@ The dashboard will monitor:
 • Distance to evacuation centres, when data is available
 
 ## Likely Data Source
-Primary Source
+**Primary Source**
 Name: Open-Meteo Weather API & Flood API
 
-URL:
-
+**URL:**
 Weather: https://api.open-meteo.com/v1/forecast
 
 Flood: https://flood-api.open-meteo.com/v1/flood
@@ -58,8 +57,7 @@ Documentation: https://open-meteo.com/
 
 Format: JSON (also supports CSV via parameter)
 
-Coverage:
-
+**Coverage:**
 Weather: Global coverage, hourly/daily forecasts up to 16 days, historical data back to 1940 (ERA5 reanalysis), 80+ years of historical archive 
 
 Flood: Simulated river discharge at 5 km resolution, available from 1984 up to 7 months forecast 
@@ -68,8 +66,7 @@ Target Location: Noveleta, Cavite is at approximately 14.4275°N, 120.8808°E wi
 
 Why it fits the problem: Provides free, no-API-key-required access to both real-time weather data (precipitation, temperature, wind) and flood forecasting (river discharge data) for any global location . Flood API specifically offers river discharge variables including mean, max, min, and percentile data, which directly supports flood-risk monitoring .
 
-Known limitations:
-
+**Known limitations:**
 Flood API uses simulated river discharge models (5 km resolution), not local gauge measurements
 
 Commercial use requires an API key and subscription 
@@ -78,7 +75,7 @@ Data is model-derived, not from physical weather stations in Noveleta itself
 
 Non-commercial use is free but requires attribution (CC BY 4.0) 
 
-Fallback Source
+**Fallback Source**
 Name: PAGASA ClimDatPh Platform
 
 URL: https://bagong.pagasa.dost.gov.ph/climate/climate-data
@@ -89,8 +86,7 @@ Coverage: Daily, monthly, and annual climate data from 55 synoptic stations in t
 
 Why it could still work: Provides official, ground-truthed climate data from the Philippine government's weather agency, which is locally relevant and authoritative. Includes variables like rainfall, temperature, wind speed/direction, and relative humidity .
 
-Known limitations:
-
+**Known limitations:**
 Request-based system requiring formal application via Google Forms with 3+ working days processing time 
 
 Sub-daily data may not always be available 
