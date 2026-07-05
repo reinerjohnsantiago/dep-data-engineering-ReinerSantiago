@@ -17,11 +17,13 @@ body:
     validations:
       required: true
 
-  - type: input
+  - type: dropdown
     id: cohort
     attributes:
       label: Cohort
-      value: "2026-A"
+      options:
+        - "2026-A"
+        - "Open Track"
     validations:
       required: true
 
