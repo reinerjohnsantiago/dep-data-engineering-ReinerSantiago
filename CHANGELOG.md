@@ -2,6 +2,14 @@
 
 All notable curriculum-documentation changes in this repo should be recorded here.
 
+## Unreleased
+
+## [0.2.0] - CI Milestone Check Deadlines
+
+### Added
+
+- **Hard deadline enforcement**: All milestones now have hard deadlines configured in `.github/milestone-deadlines.json`. Submissions created past the deadline are auto-rejected with a clear message. Resubmissions (rechecks) also check the original issue's creation date against the deadline. Deadlines are enforced at the workflow level — no date-based logic exists in the milestone check scripts.
+
 ## [0.1.0] - CI Milestone Check fixes
 
 ### Fixed
