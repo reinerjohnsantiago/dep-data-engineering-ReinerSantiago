@@ -2,7 +2,17 @@
 
 All notable curriculum-documentation changes in this repo should be recorded here.
 
-## Unreleased
+## [0.1.0] - CI Milestone Check fixes
+
+### Fixed
+
+- **Gate URL matching in milestone-check.yml**: Normalizes repo URLs to base `owner/repo` before comparing. Previously, if a builder pasted a blob/tree URL (e.g. `.../blob/main/file`) in the "GitHub Repo URL" field, the gate check would fail to find their passed M0 submission because the substring match used the raw (wrong) URL.
+- **Clone URL normalization in milestone-recheck.yml**: Same normalization applied to repo URLs on resubmission so `git clone` works even when the original issue body has a blob/file URL.
+
+### Added
+
+- **URL pattern validation on all milestone issue templates (M0-M6)**: The "GitHub Repo URL" field now rejects blob/tree/file URLs with a clear mismatch message, guiding builders to enter the repo root URL.
+- **Auto-apply `passed` label for M0**: When all M0 structural checks pass, the `passed` label is applied automatically. M0 checks are purely structural (README existence and content length), so no subjective review is needed — this removes the manual bottleneck before builders can proceed to M1.
 
 ## [0.0.7] - Organizing Team Pictures
 
