@@ -36,6 +36,8 @@ body:
       placeholder: "https://github.com/<your-username>/dep-starter-kit"
     validations:
       required: true
+      pattern: ^https?:\/\/github\.com\/[\w.-]+\/[\w.-]+
+      pattern_mismatch_message: "Enter the repository URL (e.g. https://github.com/your-username/dep-starter-kit), not a file or blob URL."
 
   - type: input
     id: commit_hash
