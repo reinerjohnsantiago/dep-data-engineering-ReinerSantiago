@@ -126,3 +126,9 @@ Purpose of dashboard:
 
 The dashboard will help residents and authorities prepare for storms, monsoon rains and recurring flooding. It will support earlier decision-making, safer travel planning and faster emergency preparation.
 
+
+
+## First Pull Path
+- README.md
+- scripts/ingest.py
+- notebooks/flood_risk_analysis.ipynb
