@@ -5,7 +5,22 @@
 
 **Timeline:** June 2026 – December 2026 (24 weeks)
 
+## How to run my scripts
 
+```bash
+# Setup
+cd cohorts/starter-kit
+python -m venv .venv
+# Windows:
+.venv\Scripts\Activate.ps1
+# macOS/Linux:
+# source .venv/bin/activate
+pip install -r requirements.txt
+
+# Ingestion (Phase 2)
+python scripts/ingest.py
+# Output: timestamped raw JSON in data/raw/
+```
 
 ## Problem Statement
 Residents of Noveleta needs an accessible way to identify areas that are highly susceptible to flooding, including locations that may experience flooding even during light or moderate rainfall.
